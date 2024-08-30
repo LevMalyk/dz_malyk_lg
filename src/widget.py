@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Union
 
 from src.masks import get_mask_account, get_mask_card_number
@@ -16,3 +17,8 @@ def mask_account_card(user_data: Union[str, int]) -> str:
         return f"{user_data[:-16]}{get_mask_card_number(user_data[-16:])}"
     else:
         return "Введены неправельные данные"
+
+
+def get_date(user_date: str) -> str:
+    format_date = datetime.fromisoformat(user_date)
+    return format_date.strftime("%d.%m.%Y")
