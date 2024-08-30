@@ -20,5 +20,6 @@ def mask_account_card(user_data: Union[str, int]) -> str:
 
 
 def get_date(user_date: str) -> str:
+    """Функция получает строку содержащую год, меся и день и возвращает в формате ("%d.%m.%Y")"""
     format_date = datetime.fromisoformat(user_date)
     return format_date.strftime("%d.%m.%Y")
