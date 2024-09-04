@@ -1,18 +1,22 @@
 from datetime import datetime
+from typing import Dict, List
 
 
-def filter_by_state(dict_banking_operations: list, state: str = "EXECUTED") -> list:
+def filter_by_state(banking_operations: List[Dict], state: str = "EXECUTED") -> List[Dict]:
     """
-    Функция получет список словарей с данными и возвращает новый отсартированный список,
-    Функция имеет значение для сортировки по умолчанию
+    Фильтрует банковские операции по состаянию.
+    :param banking_operations: Список словарей с банковскими операциями.
+    :param state: Состояние, по которому необходимо призвести фильтрацию (по умолчанию "EXECUTED").
+    :return: Список словарей, отфильтрованных по состаянию.
     """
-    return [
-        dict_banking_operations
-        for dict_banking_operations in dict_banking_operations
-        if dict_banking_operations.get("state") == state
-    ]
+    return [operations for operations in banking_operations if operations.get("state") == state]
 
 
-def sort_by_date(dict_banking_operations: list, sort_param: bool = True) -> list:
-    """Функция получает список словарей с данными и возвращает новый список с данными выстроенными по дате"""
-    return sorted(dict_banking_operations, key=lambda x: datetime.fromisoformat(x["date"]), reverse=sort_param)
+def sort_by_date(banking_operations: List[Dict], sort_param: bool = True) -> List[Dict]:
+    """
+    Сортирует банковские операции по дате.
+    :param banking_operations: Список словарей с банковскими операциями.
+    :param sort_param: Порядок, по которому необходимо призвести сортировку (по умолчанию True).
+    :return: Отсартированный список словарей по дате.
+    """
+    return sorted(banking_operations, key=lambda x: datetime.fromisoformat(x["date"]), reverse=sort_param)
