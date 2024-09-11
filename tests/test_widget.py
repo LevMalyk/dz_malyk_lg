@@ -21,7 +21,7 @@ def test_get_date(user_date: str, result_date: str) -> None:
     assert get_date(user_date) == result_date
 
 
-@pytest.mark.parametrize("index", [i for i in range(8)])
+@pytest.mark.parametrize("index", [i for i in range(10)])
 def test_mask_account_card(user_data_list: list[str], result_user_data_list: list[str], index: int) -> None:
     """
     Проверяет что функция mask_account_card маскирует данные в зависимости от из формата.
