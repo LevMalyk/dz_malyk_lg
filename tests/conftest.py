@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def my_list():
+def my_list_masks_test():
     return [
     "1596837868705199",
     "64686473678894779589",
@@ -15,8 +15,8 @@ def my_list():
             ]
 
 
-@pytest.fixture()
-def my_list_result():
+@pytest.fixture
+def result_list_card_number():
     return [
     "1596 83** **** 5199",
     "Введен некоректный номер карты",
@@ -26,4 +26,17 @@ def my_list_result():
     "8990 92** **** 5229",
     "5999 41** **** 6353",
     "Введен некоректный номер карты",
+            ]
+
+@pytest.fixture
+def result_list_account_number():
+    return [
+    "Введен некоректный номер счета",
+    "**9589",
+    "Введен некоректный номер счета",
+    "**5560",
+    "Введен некоректный номер счета",
+    "Введен некоректный номер счета",
+    "Введен некоректный номер счета",
+    "**4305",
             ]
