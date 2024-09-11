@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import Union
+from dateutil import parser
 
 from src.masks import get_mask_account, get_mask_card_number
 
@@ -21,5 +22,9 @@ def mask_account_card(user_data: Union[str, int]) -> str:
 
 def get_date(user_date: str) -> str:
     """Функция получает строку содержащую год, меся и день и возвращает в формате ("%d.%m.%Y")"""
-    format_date = datetime.fromisoformat(user_date)
-    return format_date.strftime("%d.%m.%Y")
+    try:
+        result_date = parser.parse(user_date).strftime("%d.%m.%Y")
+    except ValueError:
+        return "Нет даты"
+    else:
+        return result_date
