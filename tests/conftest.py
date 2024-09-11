@@ -2,7 +2,8 @@ import pytest
 
 
 @pytest.fixture
-def my_list_masks_test():
+def my_list_masks_test() -> list[str]:
+    """Для тестированя модуля masks.py"""
     return [
         "1596837868705199",
         "64686473678894779589",
@@ -16,7 +17,8 @@ def my_list_masks_test():
 
 
 @pytest.fixture
-def result_list_card_number():
+def result_list_card_number() -> list[str]:
+    """Для тестированя модуля masks.py"""
     return [
         "1596 83** **** 5199",
         "Введен некоректный номер карты",
@@ -30,7 +32,8 @@ def result_list_card_number():
 
 
 @pytest.fixture
-def result_list_account_number():
+def result_list_account_number() -> list[str]:
+    """Для тестированя модуля masks.py"""
     return [
         "Введен некоректный номер счета",
         "**9589",
@@ -44,7 +47,8 @@ def result_list_account_number():
 
 
 @pytest.fixture
-def user_data_list():
+def user_data_list() -> list[str]:
+    """Для тестированя модуля widget.py"""
     return [
         "Maestro 1596837868705199",
         "Счет 64686473678894779589",
@@ -54,11 +58,15 @@ def user_data_list():
         "Visa Platinum 8990922113665229",
         "Visa Gold 5999414228426353",
         "Счет 73654108430135874305",
+        "Счет 30135874305",
+        "Visa Gold 599948455687514228426353",
+        "Hello",
     ]
 
 
 @pytest.fixture
-def result_user_data_list():
+def result_user_data_list() -> list[str]:
+    """Для тестированя модуля widget.py"""
     return [
         "Maestro 1596 83** **** 5199",
         "Счет **9589",
@@ -68,11 +76,15 @@ def result_user_data_list():
         "Visa Platinum 8990 92** **** 5229",
         "Visa Gold 5999 41** **** 6353",
         "Счет **4305",
+        "Введены неправельные данные",
+        "Введены неправельные данные",
+        "Введены неправельные данные",
     ]
 
 
 @pytest.fixture
-def operation_test_list():
+def operation_test_list() -> list[dict]:
+    """Для тестированя модуля processing.py"""
     return [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
@@ -82,12 +94,12 @@ def operation_test_list():
         {"id": 939719570, "state": "EXECUTED", "date": "2019-07-02T02:08:58.425572"},
         {"id": 594226727, "state": "CANCELED", "date": "2019-07-02T21:27:25.241689"},
         {"id": 615064591, "state": "CANCELED", "date": "2019-07-02T08:21:33.419441"},
-
     ]
 
 
 @pytest.fixture
-def operation_test_list_wrong_date():
+def operation_test_list_wrong_date() -> list[dict]:
+    """Для тестированя модуля processing.py"""
     return [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
