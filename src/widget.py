@@ -1,5 +1,5 @@
-from datetime import datetime
 from typing import Union
+
 from dateutil import parser
 
 from src.masks import get_mask_account, get_mask_card_number
