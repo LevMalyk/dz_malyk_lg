@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 def filter_by_state(banking_operations: List[Dict], state: str = "EXECUTED") -> List[Dict]:
@@ -12,11 +12,16 @@ def filter_by_state(banking_operations: List[Dict], state: str = "EXECUTED") -> 
     return [operations for operations in banking_operations if operations.get("state") == state]
 
 
-def sort_by_date(banking_operations: List[Dict], sort_param: bool = True) -> List[Dict]:
+def sort_by_date(banking_operations: List[Dict], sort_param: bool = True) -> Any:
     """
     Сортирует банковские операции по дате.
     :param banking_operations: Список словарей с банковскими операциями.
     :param sort_param: Порядок, по которому необходимо призвести сортировку (по умолчанию True).
-    :return: Отсартированный список словарей по дате.
+    :return: Отсартированный список словарей по дате или ошибку что дада некоректна.
     """
-    return sorted(banking_operations, key=lambda x: datetime.fromisoformat(x["date"]), reverse=sort_param)
+    try:
+        sorted(banking_operations, key=lambda x: datetime.fromisoformat(x["date"]), reverse=sort_param)
+    except ValueError:
+        return "Не верно указана дата"
+    else:
+        return sorted(banking_operations, key=lambda x: datetime.fromisoformat(x["date"]), reverse=sort_param)
